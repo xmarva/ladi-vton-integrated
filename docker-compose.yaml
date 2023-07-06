@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+  pytorch-openpose:
+    image: xmarva/pytorch-openpose:v0
+    ports: 
+      - 5001:5000
+    volumes:
+      - storage:/workspace/storage
+    runtime: nvidia
+    command: 'sleep infinity'
+    
+  detectron2:
+    image: xmarva/detectron2:v0
+    ports: 
+      - 5002:5000
+    volumes:
+      - storage:/home/appuser/detectron2_repo/storage
+    runtime: nvidia
+    command: 'sleep infinity'
+
+  schp:
+    image: xmarva/schp:v0
+    ports: 
+      - 5003:5000
+    volumes:
+      - storage:/workspace/storage
+    runtime: nvidia
+    command: 'sleep infinity'
+
+  ladi-vton:
+    image: xmarva/ladi-vton:v0
+    ports: 
+      - 5004:5000
+    volumes:
+      - storage:/workspace/storage
+    runtime: nvidia
+    command: 'sleep infinity'
+
+volumes: 
+  storage: 
+
+# docker-compose up -d ladi-vton
+# docker-compose exec -it ladi-vton bash
